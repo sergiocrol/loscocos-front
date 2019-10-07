@@ -6,17 +6,16 @@ import Navbar from './views/components/Navbar.js';
 import Home from './views/pages/Home.js';
 import NotFound from './views/pages/NotFound.js';
 import Payment from './views/pages/Payment.js';
-import Promo from './views/pages/Promo.js';
 import Redirect from './views/pages/Redirect.js';
 
 import ParseUrl from './services/ParseUrl.js';
 
 const routes = {
   '/': Redirect,
+  '/payment': Payment,
   '/rooms': Redirect,
   '/rooms?adults=x&children=x&checkin=in&checkout=out': Home,
-  '/rooms?adults=x&children=x&checkin=in&checkout=out&promo_code=promo': Promo,
-  '/payment': Payment
+  '/rooms?adults=x&children=x&checkin=in&checkout=out&promo_code=promo': Home,
 }
 
 const router = async () => {
@@ -39,15 +38,12 @@ const router = async () => {
     (request.checkout[0] === 'checkout' && request.checkout[1] ? '&' + request.checkout[0] + '=out' : '') +
     (request.promo[0] === 'promo_code' && request.promo[1] ? '&' + request.promo[0] + '=promo' : '')
 
-  console.log(parsedURL)
   const page = routes[parsedURL] ? routes[parsedURL] : NotFound;
   content.innerHTML = await page.render();
   await page.afterRender();
 
 }
 
-// Listen on hash change:
 window.addEventListener('hashchange', router);
 
-// Listen on page load:
 window.addEventListener('load', router);

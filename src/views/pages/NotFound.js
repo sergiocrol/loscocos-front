@@ -3,7 +3,7 @@
 const NotFound = {
   render: async () => {
     const view = `  
-      <h1>NotFound</h1>
+      <h1>404 - Not Found :(</h1>
     `;
 
     return view;

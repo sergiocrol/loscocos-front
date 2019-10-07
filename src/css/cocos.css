@@ -216,7 +216,8 @@ h2 {
   line-height: 35px;
   font-size: 28px;
   color: #4a4a4a;
-  padding-top: 15px
+  padding-top: 10rem;
+  text-align: center;
 }
 
 h4 {
@@ -225,6 +226,11 @@ h4 {
   letter-spacing: 3.6px;
   color: #0062b2;
   padding-top: 140px
+}
+
+.center {
+  display: flex;
+  justify-content: center;
 }
 
 .footer a,
@@ -670,7 +676,11 @@ h4 {
 .room-content .room-info .item.price .line-through {
   font-size: 18px;
   font-weight: 400;
-  display: none
+  /* display: none */
+}
+
+.display-none {
+  display: none;
 }
 
 .line-through {

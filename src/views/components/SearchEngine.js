@@ -1,12 +1,7 @@
 'use strict';
 
-import getRooms from '../../api/api.js';
 import ParseUrl from '../../services/ParseUrl.js';
 import FormatDate from '../../services/FormatDate.js';
-
-const formatDate = (date) => {
-    return date.replace(/^(\d\d)(\d\d)(\d\d\d\d)$/, "$1/$2/$3");
-}
 
 const SearchEngine = {
     render: async () => {
@@ -20,7 +15,7 @@ const SearchEngine = {
 
                         <div class="form-group">
                             <div class="input-group date" data-date-format="dd/mm/yyyy">
-                                <input id="checkin" type="text" class="form-control" placeholder="Check in">
+                                <input id="checkin" type="text" class="form-control" placeholder="Check in" value="05/09/2019">
                                 <div class="input-group-addon" >
                                     <span class="glyphicon glyphicon-calendar"></span>
                                 </div>
@@ -29,7 +24,7 @@ const SearchEngine = {
 
                         <div class="form-group">
                             <div class="input-group date" data-date-format="dd/mm/yyyy">
-                                <input id="checkout" type="text" class="form-control" placeholder="Checkout">
+                                <input id="checkout" type="text" class="form-control" placeholder="Checkout" value="06/09/2019">
                                 <div class="input-group-addon" >
                                     <span class="glyphicon glyphicon-calendar"></span>
                                 </div>
