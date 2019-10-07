@@ -1,6 +1,6 @@
 'use strict';
 
-const baseURL = 'http://localhost:4000/';
+const baseURL = 'https://loscocosapi.herokuapp.com/';
 
 const roomsApi = {
   getRooms: async (checkin, checkout, adults, children, promo) => {
