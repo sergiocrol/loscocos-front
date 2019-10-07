@@ -1,7 +1,5 @@
 'use strict';
 
-import FormatDate from '../../services/FormatDate.js';
-
 const Redirect = {
   render: async () => {
     const day = new Date().getDate() <= 9 ? '0' + new Date().getDate() : new Date().getDate();

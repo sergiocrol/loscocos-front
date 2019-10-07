@@ -8,6 +8,7 @@ import FormatDate from '../../services/FormatDate.js';
 let roomList = [];
 
 const rooms = async () => {
+  // Call to the API and get all rooms that match with the arguments we pass
   const { adults, children, checkin, checkout, promo } = ParseUrl.parseRequestURL();
   roomList = await roomsApi.getRooms(checkin[1], checkout[1], adults[1], children[1], promo[1]);
   let rooms = '';
@@ -132,6 +133,7 @@ const aside = {
 
 const Home = {
   render: async () => {
+    // Home page is rendered
     const roomList = await rooms();
     const searchBox = await SearchEngine.render();
     const asideBox = await aside.render(0);
@@ -169,6 +171,7 @@ const Home = {
     let roomId = 0;
     let numberRooms = 1;
 
+    // When click on a room's div, call aside function passing the selected room id
     document.querySelectorAll('div[name="selectedRoom"]').forEach(el => {
       el.addEventListener('click', (event) => {
         roomId = event.currentTarget.id;
@@ -176,6 +179,7 @@ const Home = {
       })
     })
 
+    // Change price when we select the number of rooms
     document.getElementById('rooms').addEventListener('change', (event) => {
       numberRooms = event.target.value;
       const price = roomList.rooms[roomId].totalPriceDiscount ? roomList.rooms[roomId].totalPriceDiscount : roomList.rooms[roomId].totalPrice;
@@ -183,6 +187,7 @@ const Home = {
       document.getElementById('total-price-through').innerHTML = `€${roomList.rooms[roomId].totalPrice * numberRooms}`;
     })
 
+    // When click save button, save in localStorage the selected room and display payment page
     document.getElementById('save').addEventListener('click', () => {
       localStorage.setItem('loscocos', JSON.stringify({ 'roomId': roomList.rooms[roomId].id, 'numberRooms': numberRooms, 'checkin': checkin[1], 'checkout': checkout[1], 'promo': promo[1] }));
       location.href = '#/payment'

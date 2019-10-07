@@ -1,5 +1,6 @@
 'use strict';
 
+// url parser. Splits the url to take the query params and value
 const ParseUrl = {
   parseRequestURL: () => {
 

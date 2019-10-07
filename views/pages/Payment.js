@@ -2,6 +2,7 @@
 
 import roomsApi from '../../api/api.js';
 
+// Get info from localStorage and call to the API to get the correct room data
 const Payment = {
   render: async () => {
     const { roomId, numberRooms, checkin, checkout, promo } = JSON.parse(localStorage.getItem('loscocos'));

@@ -73,6 +73,7 @@ const SearchEngine = {
         return view;
     },
     afterRender: async () => {
+        //get the elements of the search box and set values based on url params
         const { adults, children, checkin, checkout } = ParseUrl.parseRequestURL();
         const checkinInput = document.getElementById('checkin');
         const checkoutInput = document.getElementById('checkout');
@@ -84,6 +85,7 @@ const SearchEngine = {
         childrenInput[children[1]].selected = true;
         adultsInput[adults[1]].selected = true;
 
+        // When we click on the button, get the new route and display the correct page (this happens in app.js)
         document.getElementById("modifyButton").addEventListener("click", async () => {
             const checkIn = FormatDate.removeFormat(checkinInput.value);
             const checkOut = FormatDate.removeFormat(checkoutInput.value);
